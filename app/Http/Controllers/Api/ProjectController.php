@@ -15,7 +15,7 @@ class ProjectController extends Controller
      */
     public function index()
     {
-        $projects = Project::select('title', 'description', 'repository', 'date_create', 'last_update', 'author', 'type_id')->with('type')->get();
+        $projects = Project::select('id', 'title', 'description', 'repository', 'date_create', 'last_update', 'author', 'type_id')->with('type')->get();
 
         return response()->json(["projects" => $projects]);
     }
@@ -39,7 +39,7 @@ class ProjectController extends Controller
      */
     public function show($id)
     {
-        $project = Project::select('title', 'description', 'repository', 'date_create', 'last_update', 'author', 'type_id')
+        $project = Project::select('id', 'title', 'description', 'repository', 'date_create', 'last_update', 'author', 'type_id')
             ->where('id', $id)
             ->with('type')
             ->get();
